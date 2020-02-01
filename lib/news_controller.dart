@@ -4,9 +4,6 @@ import 'package:webfeed/webfeed.dart';
 
 
 class NewsController {
-  NewsController(){
-    print('Constructor built: ${newsState.value.items}');
-  }
 
   final _url = 'http://www.cnbc.com/id/19789731/device/rss/rss.xml';
   final _client = Client();

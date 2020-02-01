@@ -4,7 +4,7 @@ class StarterEmptyList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [Text('  hello')],
+      children: [Text('Swipe down to update the feed')],
     );
   }
 }
