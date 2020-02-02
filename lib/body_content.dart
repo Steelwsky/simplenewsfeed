@@ -31,7 +31,14 @@ class BodyContent extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(fontSize: 16),
                               ),
+                              trailing: newsController.isNewsInHistory(i)
+                                  ? Icon(Icons.bookmark,
+                                      size: 24, color: Colors.amber)
+                                  : Icon(Icons.bookmark_border,
+                                      size: 24, color: Colors.amber),
                               onTap: () {
+                                newsController.addNotViewedToHistory(rssFeed
+                                    .items[rssFeed.items.indexOf(i)].guid);
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (_) => SelectedNewsPage(
                                         item: rssFeed
