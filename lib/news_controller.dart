@@ -14,5 +14,4 @@ class NewsController {
     newsState.value = RssFeed.parse(xmlStr);
     print('fetchNews(): ${newsState.value.items}');
   }
-
 }

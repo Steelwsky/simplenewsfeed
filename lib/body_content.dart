@@ -14,8 +14,7 @@ class BodyContent extends StatelessWidget {
           return RefreshIndicator(
               key: Key('refresh'),
               onRefresh: () => providerController.fetchNews(),
-              child: providerController.newsState.value.items ==
-                      null // newsBuilder.items == null would be wrong coz it's always a null after creation?
+              child: providerController.newsState.value.items == null
                   ? InitialEmptyList()
                   : ListView(
                       children: newsBuilder.items
