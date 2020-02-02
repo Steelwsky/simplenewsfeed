@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simplenewsfeed/news_controller.dart';
 import 'package:simplenewsfeed/initial_empty_list.dart';
+import 'package:simplenewsfeed/selected_news_page.dart';
 import 'package:webfeed/webfeed.dart';
 
 class BodyContent extends StatelessWidget {
@@ -20,10 +21,8 @@ class BodyContent extends StatelessWidget {
                       children: rssFeed.items
                           .map(
                             (i) => ListTile(
-                              key: Key('listKey'),
                               title: Text(
                                 i.title,
-                                key: Key('titleKey'),
                                 style: TextStyle(fontSize: 18),
                               ),
                               subtitle: Text(
@@ -32,7 +31,12 @@ class BodyContent extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(fontSize: 16),
                               ),
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (_) => SelectedNewsPage(
+                                        item: rssFeed
+                                            .items[rssFeed.items.indexOf(i)])));
+                              },
                             ),
                           )
                           .toList()));
