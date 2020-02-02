@@ -7,18 +7,17 @@ import 'package:webfeed/webfeed.dart';
 class BodyContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final providerController = Provider.of<NewsController>(context);
+    final newsController = Provider.of<NewsController>(context);
     return ValueListenableBuilder<RssFeed>(
-        valueListenable: providerController.newsState,
-        builder: (_, newsBuilder, __) {
+        valueListenable: newsController.newsState,
+        builder: (_, rssFeed, __) {
           return RefreshIndicator(
               key: Key('refresh'),
-              onRefresh: () => providerController.fetchNews(),
-              child: providerController.newsState.value.items ==
-                      null // newsBuilder.items == null would be wrong coz it's always a null after creation?
+              onRefresh: () => newsController.fetchNews(),
+              child: rssFeed.items == null
                   ? InitialEmptyList()
                   : ListView(
-                      children: newsBuilder.items
+                      children: rssFeed.items
                           .map(
                             (i) => ListTile(
                               key: Key('listKey'),
